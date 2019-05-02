@@ -50,10 +50,10 @@
                             <td>{{$product->p_color}}</td>
                             <td>{{$product->price}}</td>
                             <td style="vertical-align: middle;text-align: center;">
-                                <a href="" class="btn btn-default btn-mini">Add Images</a>
+                                <a href="{{route('product_attr.show',$product->id)}}" class="btn btn-default btn-sm">Add Images</a>
                             </td>
                             <td style="vertical-align: middle;text-align: center;">
-                                <a href="" class="btn btn-success btn-mini">Add Attr</a>
+                                <a href="{{route('product_attr.show',$product->id)}}" class="btn btn-default btn-sm">Add Attr</a>
                             </td>
                             <td>
                                 <form action="{{ route('product.destroy',$product->id) }}" method="POST">

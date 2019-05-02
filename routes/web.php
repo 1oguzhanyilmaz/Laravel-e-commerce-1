@@ -27,7 +27,8 @@ Route::group(['prefix'=>'admin','middleware'=>['auth','admin']],function () {
     /// Products Area
     Route::resource('/product','ProductController');
     /// Product Attribute
-//    Route::resource('/product_attr','ProductAtrrController');
+    Route::resource('/product_attr','ProductAtrrController');
+    Route::get('delete-attribute/{id}','ProductAtrrController@deleteAttr');
     /// Product Images Gallery
 //    Route::resource('/image-gallery','ImagesController');
 });
