@@ -9,8 +9,8 @@
             <a href="{{url('/admin/category')}}" class="btn btn-sm btn-outline-info border-0">List Categories</a><br>
             <hr>
             <p class="text-primary font-weight-bold">Products</p>
-            <a href="" class="btn btn-sm btn-outline-info border-0">Add New Product</a><br>
-            <a href="" class="btn btn-sm btn-outline-info border-0">List Products</a><br>
+            <a href="{{url('/admin/product/create')}}" class="btn btn-sm btn-outline-info border-0">Add New Product</a><br>
+            <a href="{{url('/admin/product')}}" class="btn btn-sm btn-outline-info border-0">List Products</a><br>
             <hr>
             <p class="text-primary font-weight-bold">Coupons</p>
             <a href="" class="btn btn-sm btn-outline-info border-0">Add New Coupon</a><br>

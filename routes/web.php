@@ -24,6 +24,11 @@ Route::group(['prefix'=>'admin','middleware'=>['auth','admin']],function () {
     Route::post('/update-pwd','AdminController@updatAdminPwd');
     /// Category Area
     Route::resource('/category','CategoryController');
-    
+    /// Products Area
+    Route::resource('/product','ProductController');
+    /// Product Attribute
+//    Route::resource('/product_attr','ProductAtrrController');
+    /// Product Images Gallery
+//    Route::resource('/image-gallery','ImagesController');
 });
 

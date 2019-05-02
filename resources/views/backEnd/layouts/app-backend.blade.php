@@ -27,6 +27,16 @@
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cloud.tinymce.com/5/tinymce.min.js"></script>
+    <script>
+        tinymce.init({
+            // selector:'textarea',
+            mode : "specific_textareas",
+            editor_selector : "textarea_editor"
+            // branding: false,
+            // plugins: "link code"
+        });
+    </script>
 
     {{--@yield('scripts')--}}
 
@@ -47,6 +57,7 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+
 </head>
 <body>
 <div id="app">
