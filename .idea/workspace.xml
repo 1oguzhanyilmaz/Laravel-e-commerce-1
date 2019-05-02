@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
+<<<<<<< HEAD
     <list default="true" id="02c0482f-0d1b-4d1b-b783-606e7436e867" name="Default Changelist" comment="">
       <change afterPath="$PROJECT_DIR$/resources/views/backEnd/products/create.blade.php" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/resources/views/backEnd/products/edit.blade.php" afterDir="false" />
@@ -180,6 +181,9 @@
       <change beforePath="$PROJECT_DIR$/resources/views/backEnd/layouts/nav.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/backEnd/layouts/nav.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
     </list>
+=======
+    <list default="true" id="02c0482f-0d1b-4d1b-b783-606e7436e867" name="Default Changelist" comment="" />
+>>>>>>> dev-1
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -194,8 +198,13 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/routes/web.php">
           <provider selected="true" editor-type-id="text-editor">
+<<<<<<< HEAD
             <state relative-caret-position="368">
               <caret line="32" column="3" selection-start-line="32" selection-start-column="3" selection-end-line="32" selection-end-column="3" />
+=======
+            <state relative-caret-position="256">
+              <caret line="25" column="27" selection-start-line="25" selection-start-column="27" selection-end-line="25" selection-end-column="27" />
+>>>>>>> dev-1
             </state>
           </provider>
         </entry>
@@ -212,6 +221,7 @@
           </provider>
         </entry>
       </file>
+<<<<<<< HEAD
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/Http/Controllers/ProductController.php">
           <provider selected="true" editor-type-id="text-editor">
@@ -252,6 +262,8 @@
           </provider>
         </entry>
       </file>
+=======
+>>>>>>> dev-1
     </leaf>
   </component>
   <component name="FileTemplateManagerImpl">
@@ -452,6 +464,7 @@
               <item name="views" type="462c0819:PsiDirectoryNode" />
               <item name="backEnd" type="462c0819:PsiDirectoryNode" />
               <item name="layouts" type="462c0819:PsiDirectoryNode" />
+<<<<<<< HEAD
             </path>
             <path>
               <item name="Laravel-e-commerce-1" type="b2602c69:ProjectViewProjectNode" />
@@ -460,6 +473,8 @@
               <item name="views" type="462c0819:PsiDirectoryNode" />
               <item name="backEnd" type="462c0819:PsiDirectoryNode" />
               <item name="products" type="462c0819:PsiDirectoryNode" />
+=======
+>>>>>>> dev-1
             </path>
           </expand>
           <select />
@@ -507,7 +522,11 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
+<<<<<<< HEAD
     <option name="totallyTimeSpent" value="27859000" />
+=======
+    <option name="totallyTimeSpent" value="17192000" />
+>>>>>>> dev-1
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
@@ -560,9 +579,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/backEnd/layouts/app.blade.php">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/backEnd/layouts/app.blade.php" />
     <entry file="file://$PROJECT_DIR$/resources/views/backEnd/layouts/header.blade.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="176">
@@ -787,8 +804,13 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/Http/Controllers/ProductController.php">
       <provider selected="true" editor-type-id="text-editor">
+<<<<<<< HEAD
         <state relative-caret-position="480">
           <caret line="104" column="84" selection-start-line="104" selection-start-column="84" selection-end-line="104" selection-end-column="84" />
+=======
+        <state relative-caret-position="128">
+          <caret line="21" column="8" selection-start-line="21" selection-start-column="8" selection-end-line="24" selection-end-column="11" />
+>>>>>>> dev-1
           <folding>
             <element signature="e#40#63#0#PHP" expanded="true" />
           </folding>
@@ -797,6 +819,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/resources/views/backEnd/products/index.blade.php">
       <provider selected="true" editor-type-id="text-editor">
+<<<<<<< HEAD
         <state relative-caret-position="217">
           <caret line="63" column="65" selection-start-line="63" selection-start-column="65" selection-end-line="63" selection-end-column="65" />
           <folding>
@@ -805,6 +828,10 @@
             <element signature="e#2128#2178#0#HTML" expanded="true" />
             <element signature="e#2381#2431#0#HTML" expanded="true" />
           </folding>
+=======
+        <state relative-caret-position="256">
+          <caret line="25" column="27" selection-start-line="25" selection-start-column="27" selection-end-line="25" selection-end-column="27" />
+>>>>>>> dev-1
         </state>
       </provider>
     </entry>
