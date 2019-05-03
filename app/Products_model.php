@@ -20,4 +20,7 @@ class Products_model extends Model
     public function category(){
         return $this->belongsTo(Category_model::class,'categories_id','id');
     }
+    public function attributes(){
+        return $this->hasMany(ProductAttr_model::class,'products_id','id');
+    }
 }

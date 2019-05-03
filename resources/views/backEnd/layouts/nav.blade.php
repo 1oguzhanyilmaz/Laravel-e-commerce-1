@@ -13,8 +13,8 @@
             <a href="{{url('/admin/product')}}" class="btn btn-sm btn-outline-info border-0">List Products</a><br>
             <hr>
             <p class="text-primary font-weight-bold">Coupons</p>
-            <a href="" class="btn btn-sm btn-outline-info border-0">Add New Coupon</a><br>
-            <a href="" class="btn btn-sm btn-outline-info border-0">List Coupons</a><br>
+            <a href="{{url('/admin/coupon/create')}}" class="btn btn-sm btn-outline-info border-0">Add New Coupon</a><br>
+            <a href="{{url('/admin/coupon')}}" class="btn btn-sm btn-outline-info border-0">List Coupons</a><br>
             <hr>
             <p class="text-primary font-weight-bold">Orders</p>
             <a href="" class="btn btn-sm btn-outline-info border-0">List Orders</a><br>

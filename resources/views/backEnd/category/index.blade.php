@@ -5,7 +5,7 @@
 <div class="col-md-9">
     <ol class="breadcrumb">
         <li class="breadcrumb-item"><a href="/admin">Home</a></li>
-        <li class="breadcrumb-item active"><a href="/admin/categories">Categories</a></li>
+        <li class="breadcrumb-item active"><a href="/admin/category">Categories</a></li>
     </ol>
     <div class="card">
         <div class="card-header">Categories</div>
