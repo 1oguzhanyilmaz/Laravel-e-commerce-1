@@ -50,7 +50,7 @@
                             <td>{{$product->p_color}}</td>
                             <td>{{$product->price}}</td>
                             <td style="vertical-align: middle;text-align: center;">
-                                <a href="{{route('product_attr.show',$product->id)}}" class="btn btn-default btn-sm">Add Images</a>
+                                <a href="{{route('image-gallery.show',$product->id)}}" class="btn btn-default btn-sm">Add Images</a>
                             </td>
                             <td style="vertical-align: middle;text-align: center;">
                                 <a href="{{route('product_attr.show',$product->id)}}" class="btn btn-default btn-sm">Add Attr</a>
