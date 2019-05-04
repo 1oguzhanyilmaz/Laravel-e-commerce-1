@@ -3,7 +3,7 @@
 
 @section('content')
     <div class="col-md-2">
-        @include('frontEnd.layouts.left-side')
+        {{--@include('frontEnd.layouts.left-side')--}}
     </div>
     <div class="col-md-8">
         {{--Messages--}}
@@ -141,7 +141,7 @@
         </div>
     </div>
     <div class="col-md-2">
-        @include('frontEnd.layouts.right-side')
+        {{--@include('frontEnd.layouts.right-side')--}}
     </div>
 @endsection
 

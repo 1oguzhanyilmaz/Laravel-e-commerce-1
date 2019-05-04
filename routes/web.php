@@ -25,10 +25,23 @@ Route::get('/cart/update-quantity/{id}/{quantity}','CartController@updateQuantit
 Route::post('/apply-coupon','CouponController@applycoupon');
 
 ### User and Register ###
-
+Route::get('/login-page','UsersController@index');
+Route::post('/user-login','UsersController@login');
+Route::post('/user-register','UsersController@register');
+Route::get('/logout','UsersController@logout');
 
 ### User Authenticate ###
-
+Route::group(['middleware'=>'login_middleware'],function (){
+    Route::get('/myaccount','UsersController@account');
+    Route::put('/update-profile/{id}','UsersController@updateprofile');
+    Route::put('/update-password/{id}','UsersController@updatepassword');
+    Route::get('/check-out','CheckOutController@index');
+    Route::post('/submit-checkout','CheckOutController@submitcheckout');
+    Route::get('/order-review','OrdersController@index');
+    Route::post('/submit-order','OrdersController@order');
+    Route::get('/cod','OrdersController@cod');
+    Route::get('/paypal','OrdersController@paypal');
+});
 
 Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
