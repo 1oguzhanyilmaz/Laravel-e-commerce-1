@@ -5,12 +5,21 @@
     <div class="col-md-9">
         <ol class="breadcrumb">
             <li class="breadcrumb-item"><a href="#">Home</a></li>
-            <li class="breadcrumb-item"><a href="#">Library</a></li>
-            <li class="breadcrumb-item active">Data</li>
         </ol>
         <div class="card">
-            <div class="card-header">Header</div>
-            <div class="card-body">Body</div>
+            <div class="card-header">Dashboard</div>
+            <div class="card-body">
+                <p>Welcome Admin</p>
+                <p>&nbsp;</p>
+                <p>&nbsp;</p>
+                <p>&nbsp;</p>
+                <p>&nbsp;</p>
+                <p>&nbsp;</p>
+                <p>&nbsp;</p>
+                <p>&nbsp;</p>
+                <p>&nbsp;</p>
+                <p>&nbsp;</p>
+            </div>
         </div>
     </div>
 @endsection

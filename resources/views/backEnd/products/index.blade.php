@@ -8,7 +8,12 @@
             <li class="breadcrumb-item active"><a href="/admin/product">Products</a></li>
         </ol>
         <div class="card">
-            <div class="card-header">Products</div>
+            <div class="card-header">
+                Products
+                <span class="float-right">
+                    <a href="{{url('/admin/product/create')}}" class="btn btn-sm btn-success">Add New Product</a><br>
+                </span>
+            </div>
             <div class="card-body">
                 @if (session('error'))
                     <div class="alert alert-danger" role="alert">

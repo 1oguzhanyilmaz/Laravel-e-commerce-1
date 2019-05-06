@@ -35,16 +35,25 @@ Route::group(['middleware'=>'login_middleware'],function (){
     Route::get('/myaccount','UsersController@account');
     Route::put('/update-profile/{id}','UsersController@updateprofile');
     Route::put('/update-password/{id}','UsersController@updatepassword');
-    Route::get('/check-out','CheckOutController@index');
-    Route::post('/submit-checkout','CheckOutController@submitcheckout');
-    Route::get('/order-review','OrdersController@index');
-    Route::post('/submit-order','OrdersController@order');
-    Route::get('/cod','OrdersController@cod');
-    Route::get('/paypal','OrdersController@paypal');
+    Route::group(['middleware'=>'CheckCart'], function (){
+        Route::get('/check-out','CheckOutController@index');
+        Route::post('/submit-checkout','CheckOutController@submitcheckout');
+        Route::get('/order-review','OrdersController@index');
+        Route::post('/submit-order','OrdersController@order');
+        Route::get('/cod','OrdersController@cod');
+        Route::get('/paypal','OrdersController@paypal');
+    });
 });
 
-Auth::routes();
-Route::get('/home', 'HomeController@index')->name('home');
+ Auth::routes();
+// Auth::routes(['register'=>false]);
+// Auth::routes(['login'=>false]);
+//Route::match(['get', 'post'], 'register', function(){
+//    return redirect('/');
+//});
+//Route::match(['get', 'post'], 'login', function(){
+//    return redirect('/');
+//});
 
 Route::group(['prefix'=>'admin','middleware'=>['auth','admin']],function () {
     Route::get('/', 'AdminController@index')->name('admin_home');
@@ -62,5 +71,13 @@ Route::group(['prefix'=>'admin','middleware'=>['auth','admin']],function () {
     Route::resource('/image-gallery','ImagesController');
     ### Coupons ###
     Route::resource('/coupon','CouponController');
+    ### Users - Dashboard ###
+    Route::get('/users', 'UsersController@userIndex');
+    Route::get('/users/create', 'UsersController@userCreate');
+    Route::post('/users', 'UsersController@userStore');
+    Route::get('/users/{id}', 'UsersController@userShow');
+    Route::get('/users/{id}/edit', 'UsersController@userEdit');
+    Route::put('/users/{id}', 'UsersController@userUpdate');
+    Route::delete('/users/{id}', 'UsersController@userDestroy');
 });
 

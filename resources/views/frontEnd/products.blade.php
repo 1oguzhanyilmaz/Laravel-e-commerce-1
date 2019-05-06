@@ -11,9 +11,9 @@
                 <?php
                 if($byCate!=""){
                     $products=$list_product;
-                    echo '<h5 class="text-center">Category '.$byCate->name.'</h5>';
+                    echo 'Category '.$byCate->name;
                 }else{
-                    echo '<h5 class="text-center">List Products</h5>';
+                    echo 'List Products';
                 }
                 ?>
             </div>

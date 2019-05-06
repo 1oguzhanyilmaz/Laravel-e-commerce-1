@@ -48,48 +48,56 @@
                             </tr>
                             </thead>
                             <tbody class="small">
-                            @foreach($cart_datas as $cart_data)
-                                <?php
-                                $image_products=DB::table('products')
-                                    ->select('image')
-                                    ->where('id',$cart_data->products_id)
-                                    ->get();
-                                ?>
+                            @if($total_price == 0)
                                 <tr>
-                                    <td>
-                                        @foreach($image_products as $image_product)
-                                            <a href="">
-                                                <img src="{{url('products/small',$image_product->image)}}" alt="img" style="width: 100px;">
-                                            </a>
-                                        @endforeach
-                                    </td>
-                                    <td>
-                                        <h5><a href="">{{$cart_data->product_name}}</a></h5>
-                                        <p>{{$cart_data->product_code}} | {{$cart_data->size}}</p>
-                                    </td>
-                                    <td><p>{{$cart_data->price}} TL</p></td>
-                                    <td>
-                                        <a href="{{url('/cart/update-quantity/'.$cart_data->id.'/1')}}">
-                                            <button class="font-weight-bold btn btn-sm btn-outline-success border-0">+</button>
-                                        </a>
-                                        <span class="m-2" id="quantity">{{$cart_data->quantity}}</span>
-                                        @if($cart_data->quantity > 1)
-                                            <a href="{{url('/cart/update-quantity/'.$cart_data->id.'/-1')}}">
-                                                <button class="font-weight-bold btn btn-sm btn-outline-success border-0">-</button>
-                                            </a>
-                                        @endif
-                                    </td>
-                                    <td>
-                                        <p class="">{{$cart_data->price*$cart_data->quantity}} TL</p>
-                                    </td>
-                                    <td>
-                                        <a class="btn btn-sm btn-outline-danger border-0" href="{{url('/cart/deleteItem',$cart_data->id)}}">
-                                            X
-                                        </a>
+                                    <td colspan="6">
+                                        <h5 class="font-weight-light mt-4">Your cart is empty !</h5>
                                     </td>
                                 </tr>
-                                <hr class="p-1">
-                            @endforeach
+                            @else
+                                @foreach($cart_datas as $cart_data)
+                                    <?php
+                                    $image_products = DB::table('products')
+                                        ->select('image')
+                                        ->where('id',$cart_data->products_id)
+                                        ->get();
+                                    ?>
+                                    <tr>
+                                        <td>
+                                            @foreach($image_products as $image_product)
+                                                <a href="">
+                                                    <img src="{{url('products/small',$image_product->image)}}" alt="img" style="width: 100px;">
+                                                </a>
+                                            @endforeach
+                                        </td>
+                                        <td>
+                                            <h5><a href="">{{$cart_data->product_name}}</a></h5>
+                                            <p>{{$cart_data->product_code}} | {{$cart_data->size}}</p>
+                                        </td>
+                                        <td><p>{{$cart_data->price}} TL</p></td>
+                                        <td>
+                                            <a href="{{url('/cart/update-quantity/'.$cart_data->id.'/1')}}">
+                                                <button class="font-weight-bold btn btn-sm btn-outline-success border-0">+</button>
+                                            </a>
+                                            <span class="m-2" id="quantity">{{$cart_data->quantity}}</span>
+                                            @if($cart_data->quantity > 1)
+                                                <a href="{{url('/cart/update-quantity/'.$cart_data->id.'/-1')}}">
+                                                    <button class="font-weight-bold btn btn-sm btn-outline-success border-0">-</button>
+                                                </a>
+                                            @endif
+                                        </td>
+                                        <td>
+                                            <p class="">{{$cart_data->price*$cart_data->quantity}} TL</p>
+                                        </td>
+                                        <td>
+                                            <a class="btn btn-sm btn-outline-danger border-0" href="{{url('/cart/deleteItem',$cart_data->id)}}">
+                                                X
+                                            </a>
+                                        </td>
+                                    </tr>
+                                    {{--<hr class="p-1">--}}
+                                @endforeach
+                            @endif
                             </tbody>
                         </table>
                     </div>
@@ -133,7 +141,7 @@
                             <input class="form-control-sm form-control" type="text" disabled="disabled" value="Total {{$total_price}} TL">
                         @endif
                         <div class="mt-4 float-right">
-                            <a class="btn btn-primary btn-sm" href="{{url('/check-out')}}">Check Out</a>
+                            <a class="btn btn-primary btn-sm" href="{{url('/check-out')}}">Check Out >></a>
                         </div>
                     </div>
                 </div>

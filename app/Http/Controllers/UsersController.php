@@ -18,6 +18,9 @@ class UsersController extends Controller
         $input_data = $request->all();
         if(Auth::attempt(['email'=>$input_data['email'],'password'=>$input_data['password']])){
             Session::put('loginSession',$input_data['email']);
+            if (Auth::user()->isAdmin()){
+                return redirect('/')->with('success','Welcome Admin !');
+            }
             return redirect('/viewcart');
         }else{
             return back()->with('error','Account is not Valid!');
@@ -75,5 +78,52 @@ class UsersController extends Controller
         }else{
             return back()->with('error','Password is Inconrrect!');
         }
+    }
+
+    ####################################################################
+    ##### Admin Panel #####
+    public function userIndex(){
+        $i=0;
+        $users = User::orderBy('created_at','desc')->get();
+        return view('backEnd.users.index',compact('users','i'));
+    }
+    public function userCreate(){
+        return view('backEnd.users.create');
+    }
+    public function userStore(Request $request){
+        $request->validate([
+            'name'=>'required|string|max:255',
+            'email'=>'required|string|email|unique:users,email',
+            'password'=>'required|min:6|confirmed',
+        ]);
+        $formInput = $request->all();
+        $formInput['password'] = Hash::make($formInput['password']);
+        User::create($formInput);
+        return redirect('/admin/users')->with('success','User added successfully!');
+    }
+    public function userShow($id){
+        die('user Show');
+    }
+    public function userEdit($id){
+        $edit_user = User::findOrFail($id);
+        return view('backEnd.users.edit',compact('edit_user'));
+    }
+    public function userUpdate(Request $request, $id){
+        $update_user = User::findOrFail($id);
+        $request->validate([
+            'name'=>'required|string|max:255',
+            'email'=>'required|string|email',
+            'password'=>'required|min:6|confirmed',
+        ]);
+        $formInput = $request->all();
+        $new_pass = Hash::make($formInput['password']);
+        $formInput['password'] = $new_pass;
+        $update_user->update($formInput);
+        return redirect('/admin/users')->with('success','User updated successfully!');
+    }
+    public function userDestroy($id){
+        $delete_user = User::findOrFail($id);
+        $delete_user->delete();
+        return redirect('/admin/users')->with('success','User deleted successfully!');
     }
 }

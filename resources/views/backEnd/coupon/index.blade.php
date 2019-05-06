@@ -8,7 +8,12 @@
             <li class="breadcrumb-item active"><a href="/admin/coupon">Coupons</a></li>
         </ol>
         <div class="card">
-            <div class="card-header">Coupons</div>
+            <div class="card-header">
+                Coupons
+                <span class="float-right">
+                    <a href="{{url('/admin/coupon/create')}}" class="btn btn-sm btn-success">Add New Coupon</a><br>
+                </span>
+            </div>
             <div class="card-body">
                 @if (session('error'))
                     <div class="alert alert-danger" role="alert">

@@ -15,14 +15,12 @@
             </div>
             <hr>
         @endif
-
         @if (session('success'))
             <div class="alert alert-success" role="alert">
                 {{ session('success') }}
             </div>
             <hr>
         @endif
-
         @if ($errors->any())
             <div class="alert alert-danger">
                 <strong>Whoops!</strong> There were some problems with your input.<br><br>
@@ -75,7 +73,7 @@
                                     @if($totalStock>0)
                                         <span id="availableStock">In Stock</span>
                                     @else
-                                        <span id="availableStock">Out of Stock</span>
+                                        <span id="availableStock" class="text-danger font-weight-bold">Out of Stock</span>
                                     @endif
                                 </p>
                                 <hr class="p-1">
@@ -99,7 +97,7 @@
                                 <br>
                                 @if($totalStock>0)
                                     <button type="submit" class="btn btn-success border-0 cart" id="buttonAddToCart">
-                                        Add to cart
+                                        <i class="fa fa-plus"> Add to Cart</i>
                                     </button>
                                 @endif
                             </div>

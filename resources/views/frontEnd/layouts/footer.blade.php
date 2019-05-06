@@ -3,6 +3,6 @@
         <p class="float-right">
             <a href="#">Back to top</a>
         </p>
-        <p>COPYRIGHT © Blog-O 2019. ALL RIGHTS RESERVED.</p>
+        <p>COPYRIGHT © Ecommerce-O 2019. ALL RIGHTS RESERVED.</p>
     </div>
 </div>

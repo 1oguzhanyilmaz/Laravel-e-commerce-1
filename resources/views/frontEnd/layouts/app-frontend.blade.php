@@ -16,6 +16,7 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <link href="{{asset('frontEnd/css/font-awesome.min.css')}}" rel="stylesheet">
     <link rel="stylesheet" href="{{asset('easyzoom/css/easyzoom.css')}}" />
 
     @yield('cssblock')
@@ -23,7 +24,7 @@
 </head>
 <body>
 <div id="app">
-
+    {{--<i class="fa fa-shopping-cart" style='font-size:36px'></i>--}}
     @include('frontEnd.layouts.header')
 
     <nav class="navbar navbar-expand-md navbar-light navbar-laravel">
@@ -44,20 +45,20 @@
                 <ul class="navbar-nav ml-auto">
                     <!-- Authentication Links -->
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ url('/') }}">Home</a>
+                        <a class="nav-link" href="{{ url('/') }}"><i class="fa fa-home"> Home</i></a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ url('/list-products') }}">Products</a>
+                        <a class="nav-link" href="{{ url('/list-products') }}"><i class="fa fa-bars"> Products</i></a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="{{url('/viewcart')}}">Cart</a>
+                        <a class="nav-link" href="{{url('/viewcart')}}"><i class="fa fa-shopping-cart"> Cart</i></a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="{{url('/myaccount')}}">My Account</a>
+                        <a class="nav-link" href="{{url('/myaccount')}}"><i class="fa fa-user"> My Account</i></a>
                     </li>
                     @guest
                         <li class="nav-item">
-                        <a class="nav-link" href="{{ url('/login-page') }}">{{ __('Login') }}</a>
+                            <a class="nav-link" href="{{ url('/login-page') }}"><i class="fa fa-lock">{{ __(' Login') }}</i></a>
                         </li>
                         {{--@if (Route::has('register'))--}}
                         {{--<li class="nav-item">--}}
@@ -66,21 +67,22 @@
                         {{--@endif--}}
                     @else
                         <li class="nav-item dropdown">
-                            <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                {{ Auth::user()->name }} <span class="caret"></span>
+                            <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button"
+                               data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                                <i class="fa fa-unlock"><b> {{ Auth::user()->name }}</b></i> <span class="caret"></span>
                             </a>
 
                             <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                                <a class="dropdown-item" href="{{ route('logout') }}"
-                                   onclick="event.preventDefault();
-                                                     document.getElementById('logout-form').submit();">
+                                @if(Auth::user()->isAdmin())
+                                    <a class="dropdown-item" href="{{ url('/admin') }}">
+                                        {{ __('Dashboard') }}
+                                    </a>
+                                @endif
+                                <a class="dropdown-item" href="{{ url('/logout') }}">
                                     {{ __('Logout') }}
                                 </a>
-
-                                <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                                    @csrf
-                                </form>
                             </div>
+
                         </li>
                     @endguest
                 </ul>

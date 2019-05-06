@@ -4,39 +4,46 @@ namespace App\Http\Controllers;
 
 use App\Cart_model;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Session;
 
 class CartController extends Controller
 {
     public function addToCart(Request $request){
-        $inputToCart=$request->all();
+        $inputToCart = $request->all();
         Session::forget('discount_amount_price');
         Session::forget('coupon_code');
-        if($inputToCart['size']==""){
+        if($inputToCart['size'] == ""){
             return back()->with('error','Please Select Size');
         }else{
-            $stockAvailable=DB::table('product_att')
+            $stockAvailable = DB::table('product_att')
                 ->select('stock','sku')
                 ->where(['products_id'=>$inputToCart['products_id']])
                 ->first();
 //            echo '<pre>';
 //            print_r($stockAvailable); die('Ok !');
             if($stockAvailable->stock >= $inputToCart['quantity']){
-                $inputToCart['user_email']='customer@gmail.com';
-                $session_id=Session::get('session_id');
+                if (Auth::check()){
+                    $currentUser = Auth::user();
+                    $inputToCart['user_email'] = $currentUser->email;
+                }else{
+                    $inputToCart['user_email'] = 'customer@gmail.com';
+                }
+                $session_id = Session::get('session_id');
                 if(empty($session_id)){
-                    $session_id=str_random(40);
+                    $session_id = str_random(40);
                     Session::put('session_id',$session_id);
                 }
-                $inputToCart['session_id']=$session_id;
-                $sizeAtrr=explode("-",$inputToCart['size']);
-                $inputToCart['size']=$sizeAtrr[1];
-                $inputToCart['product_code']=$stockAvailable->sku;
+                $inputToCart['session_id'] = $session_id;
+                $sizeAtrr = explode("-",$inputToCart['size']);
+                $inputToCart['size'] = $sizeAtrr[1];
+                $inputToCart['product_code'] = $stockAvailable->sku;
                 $count_duplicateItems = Cart_model::where([
-                    'products_id'=>$inputToCart['products_id'],
-                    'product_color'=>$inputToCart['product_color'],
-                    'size'=>$inputToCart['size']
+                    'products_id'   => $inputToCart['products_id'],
+                    'product_color' => $inputToCart['product_color'],
+                    'size'          => $inputToCart['size'],
+                    'session_id'    => $session_id
                 ])->count();
                 if($count_duplicateItems > 0){
                     return back()->with('error','This Item Added already');
@@ -56,6 +63,14 @@ class CartController extends Controller
         foreach ($cart_datas as $cart_data){
             $total_price += $cart_data->price * $cart_data->quantity;
         }
+//        echo '<pre>';
+//        print_r($cart_datas);
+//        print_r($total_price);
+//        die();
+
+//        echo '<pre>';
+//        print_r(session()->all());
+//        die();
         return view('frontEnd.cart',compact('cart_datas','total_price'));
     }
     public function deleteItem($id = null){

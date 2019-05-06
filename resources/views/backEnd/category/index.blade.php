@@ -8,7 +8,12 @@
         <li class="breadcrumb-item active"><a href="/admin/category">Categories</a></li>
     </ol>
     <div class="card">
-        <div class="card-header">Categories</div>
+        <div class="card-header">
+            Categories
+            <span class="float-right">
+                <a href="{{url('/admin/category/create')}}" class="btn btn-sm btn-success">Add New Category</a><br>
+            </span>
+        </div>
         <div class="card-body">
             @if (session('error'))
                 <div class="alert alert-danger" role="alert">
@@ -22,7 +27,6 @@
                 </div>
                 <hr>
             @endif
-
             <table class="table">
                 <thead>
                 <tr>
