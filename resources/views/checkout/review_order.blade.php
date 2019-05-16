@@ -88,10 +88,10 @@
                                         </td>
                                         <td>
                                             <h5>{{$cart_data->product_name}}</h5>
-                                            <p>{{$cart_data->product_code}} | {{$cart_data->size}}</p>
+                                            <p>{{$cart_data->product_code}} | {{$cart_data->size}} | {{$cart_data->product_color}}</p>
                                         </td>
                                         <td><p>{{$cart_data->price}} TL</p></td>
-                                        <td><p>{{$cart_data->quantity}} TL</p></td>
+                                        <td><p>x {{$cart_data->quantity}}</p></td>
                                         <td><p>{{$cart_data->price*$cart_data->quantity}} TL</p></td>
                                     </tr>
                                 @endforeach

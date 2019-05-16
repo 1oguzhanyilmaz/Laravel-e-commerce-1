@@ -3,19 +3,12 @@
 
 @section('content')
     <div class="col-md-2">
-        @include('frontEnd.layouts.left-side')
+        @include('frontEnd.layouts.left-side-attr')
     </div>
     <div class="col-md-8">
         <div class="card">
             <div class="card-header">
-                <?php
-                if($byCate!=""){
-                    $products=$list_product;
-                    echo 'Category '.$byCate->name;
-                }else{
-                    echo 'List Products';
-                }
-                ?>
+                {{$byCate->name}}
             </div>
             <div class="card-body">
                 <div class="row">
@@ -43,6 +36,7 @@
                         @endif
                     @endforeach
                 </div>
+                {{ $products->links() }}
             </div>
         </div>
     </div>

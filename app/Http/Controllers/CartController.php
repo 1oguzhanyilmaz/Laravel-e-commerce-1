@@ -14,16 +14,22 @@ class CartController extends Controller
         $inputToCart = $request->all();
         Session::forget('discount_amount_price');
         Session::forget('coupon_code');
-        if($inputToCart['size'] == ""){
-            return back()->with('error','Please Select Size');
+        if($inputToCart['size'] == "" || $inputToCart['color'] == ""){
+            return back()->with('error','Please Select Size and Color');
         }else{
+            $sizeAtrr = explode("-",$inputToCart['size']);
+            $inputToCart['size'] = $sizeAtrr[1];
+            $inputToCart['product_color'] = $inputToCart['color'];
             $stockAvailable = DB::table('product_att')
                 ->select('stock','sku')
-                ->where(['products_id'=>$inputToCart['products_id']])
+                ->where([
+                    'products_id'=>$inputToCart['products_id'],
+                    'size'=>$inputToCart['size'],
+                    'color'=>$inputToCart['color']])
                 ->first();
 //            echo '<pre>';
 //            print_r($stockAvailable); die('Ok !');
-            if($stockAvailable->stock >= $inputToCart['quantity']){
+            if($stockAvailable->stock >= $inputToCart['quantity'] && $inputToCart['quantity'] > 0){
                 if (Auth::check()){
                     $currentUser = Auth::user();
                     $inputToCart['user_email'] = $currentUser->email;
@@ -36,12 +42,11 @@ class CartController extends Controller
                     Session::put('session_id',$session_id);
                 }
                 $inputToCart['session_id'] = $session_id;
-                $sizeAtrr = explode("-",$inputToCart['size']);
-                $inputToCart['size'] = $sizeAtrr[1];
+
                 $inputToCart['product_code'] = $stockAvailable->sku;
                 $count_duplicateItems = Cart_model::where([
                     'products_id'   => $inputToCart['products_id'],
-                    'product_color' => $inputToCart['product_color'],
+                    'product_color' => $inputToCart['color'],
                     'size'          => $inputToCart['size'],
                     'session_id'    => $session_id
                 ])->count();

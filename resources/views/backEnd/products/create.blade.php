@@ -62,10 +62,6 @@
                         <label for="p_code">Code:</label>
                         <input type="text" class="form-control" name="p_code" id="p_code" value="{{old('p_code')}}">
                     </div>
-                    <div class="form-group">
-                        <label for="p_color">Color:</label>
-                        <input type="text" class="form-control" name="p_color" id="p_color" value="{{old('p_color')}}">
-                    </div>
                     <div class="form-group p-1">
                         <label for="description">Description:</label>
                         <textarea class="form-control textarea_editor" rows="5" id="description" name="description" placeholder="Product Description">{{old('description')}}</textarea>

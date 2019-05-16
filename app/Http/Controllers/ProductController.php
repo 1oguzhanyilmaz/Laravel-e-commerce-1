@@ -11,8 +11,9 @@ class ProductController extends Controller
 {
     public function index(){
         $i=0;
-        $products=Products_model::orderBy('created_at','desc')->get();
-        return view('backEnd.products.index',compact('products','i'));
+        $products=Products_model::orderBy('created_at','desc')->paginate(10);
+        return view('backEnd.products.index',compact('products','i'))
+            ->with('i', (request()->input('page', 1) - 1) * 10);
     }
 
     public function create(){
@@ -24,7 +25,6 @@ class ProductController extends Controller
         $request->validate([
             'p_name'=>'required|min:5',
             'p_code'=>'required',
-            'p_color'=>'required',
             'description'=>'required',
             'price'=>'required|numeric',
             'image'=>'required|image|mimes:png,jpg,jpeg|max:1000'
@@ -64,7 +64,6 @@ class ProductController extends Controller
         $request->validate([
             'p_name'=>'required|min:5',
             'p_code'=>'required',
-            'p_color'=>'required',
             'description'=>'required',
             'price'=>'required|numeric',
             'image'=>'image|mimes:png,jpg,jpeg|max:1000'

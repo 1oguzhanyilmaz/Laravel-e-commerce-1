@@ -72,7 +72,7 @@
                                         </td>
                                         <td>
                                             <h5><a href="">{{$cart_data->product_name}}</a></h5>
-                                            <p>{{$cart_data->product_code}} | {{$cart_data->size}}</p>
+                                            <p>Code: {{$cart_data->product_code}} | Size: {{$cart_data->size}} | Color: {{$cart_data->product_color}}</p>
                                         </td>
                                         <td><p>{{$cart_data->price}} TL</p></td>
                                         <td>

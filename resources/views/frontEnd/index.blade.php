@@ -46,8 +46,8 @@
                                          data-holder-rendered="true">
                                     <div class="card-body">
                                         <p class="card-text">
-                                        <h5>TL {{$product->price}}</h5>
-                                        <p>{{$product->p_name}}</p>
+                                            <h5>TL {{$product->price}}</h5>
+                                            <p>{{$product->p_name}}</p>
                                         </p>
                                         <div class="d-flex justify-content-between align-items-center">
                                             <a href="{{url('/product-detail',$product->id)}}" class="btn btn-default">View</a>
@@ -58,6 +58,7 @@
                         @endif
                     @endforeach
                 </div>
+                {{ $products->links() }}
             </div>
         </div>
     </div>

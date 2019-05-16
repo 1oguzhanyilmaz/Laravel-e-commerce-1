@@ -19,6 +19,7 @@ class ProductAtrrController extends Controller
     public function store(Request $request){
         $request->validate([
             'sku'=>'required',
+            'color'=>'required',
             'size'=>'required',
             'price'=>'required|numeric|between:0,99.99',
             'stock'=>'required|numeric'
@@ -38,13 +39,14 @@ class ProductAtrrController extends Controller
     }
 
     public function update(Request $request, $id){
-        $request_data=$request->all();
+        $request_data = $request->all();
         foreach ($request_data['id'] as $key => $attr){
-            $update_attr=ProductAttr_model::where([
+            $update_attr = ProductAttr_model::where([
                 ['products_id',$id],
                 ['id',$request_data['id'][$key]]
             ])->update([
                 'sku'=>$request_data['sku'][$key],
+                'color'=>$request_data['color'][$key],
                 'size'=>$request_data['size'][$key],
                 'price'=>$request_data['price'][$key],
                 'stock'=>$request_data['stock'][$key]]
@@ -58,7 +60,7 @@ class ProductAtrrController extends Controller
     }
 
     public function deleteAttr($id){
-        $deleteAttr=ProductAttr_model::findOrFail($id);
+        $deleteAttr = ProductAttr_model::findOrFail($id);
         $deleteAttr->delete();
         return back()->with('success','Attribute Deleted Successfull!');
     }

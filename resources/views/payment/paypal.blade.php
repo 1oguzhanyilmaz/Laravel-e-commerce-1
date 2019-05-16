@@ -2,6 +2,7 @@
 @section('title','Paypal')
 
 @section('content')
+    {{Session::forget('session_id')}}
     <div class="col-md-2">
         {{--@include('frontEnd.layouts.left-side')--}}
     </div>

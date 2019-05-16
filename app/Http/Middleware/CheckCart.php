@@ -19,7 +19,7 @@ class CheckCart
     {
         $session_id = Session::get('session_id');
         if (!Cart_model::where('session_id',$session_id)->first()){
-            return redirect('viewcart')->with('error','Once urun almalisin.');
+            return redirect('viewcart');
         }
         return $next($request);
     }

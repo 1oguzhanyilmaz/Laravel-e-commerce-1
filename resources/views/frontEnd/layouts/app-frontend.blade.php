@@ -48,10 +48,23 @@
                         <a class="nav-link" href="{{ url('/') }}"><i class="fa fa-home"> Home</i></a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ url('/list-products') }}"><i class="fa fa-bars"> Products</i></a>
+                        <a class="nav-link" href="{{ url('/') }}"><i class="fa fa-bars"> Products</i></a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="{{url('/viewcart')}}"><i class="fa fa-shopping-cart"> Cart</i></a>
+                        <a class="nav-link" href="{{url('/viewcart')}}"><i class="fa fa-shopping-cart">
+                                Cart
+                                <?php
+                                use App\Cart_model;use Illuminate\Support\Facades\Session;
+                                $session_id = Session::get('session_id');
+                                if(empty($session_id)){
+                                    echo '(0)';
+                                }else{
+                                    $productCount = Cart_model::where([
+                                        'session_id' => $session_id
+                                    ])->count();
+                                    echo '('.$productCount.')';
+                                }
+                                ?></i></a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="{{url('/myaccount')}}"><i class="fa fa-user"> My Account</i></a>
@@ -105,7 +118,13 @@
 <!-- Scripts -->
 <script src="{{ asset('js/app.js') }}"></script>
 <script src="{{asset('frontEnd/js/jquery.js')}}"></script>
-
+<script>
+    $(document).ready(function(){
+        $("#filterForm").on("change", "input:checkbox,input:radio", function(){
+            $("#filterForm").submit();
+        });
+    });
+</script>
 @yield('jsblock')
 
 </body>

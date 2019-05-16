@@ -43,16 +43,17 @@
                         <hr>
                         <p>Product Code : <b> {{$product->p_code}}</b></p>
                         <hr>
-                        <p>Product Color : <b> {{$product->p_color}}</b></p>
+                        <p>Product Price : <b> {{$product->price}}</b></p>
                     </div>
                     <div class="card-body">
-                        <form action="{{route('product_attr.update',$product->id)}}" method="POST">
+                        <form action="{{route('product_attr.update',$product->id)}}" method="POST" id="attrFrom">
                             @csrf
                             @method('PUT')
                             <table class="table small">
                                 <thead>
                                 <tr>
                                     <th style="width: 100px;">SKU</th>
+                                    <th style="width: 75px;">Color</th>
                                     <th style="width: 75px;">Size</th>
                                     <th style="width: 75px;">Price</th>
                                     <th style="width: 75px;">Stock</th>
@@ -67,6 +68,9 @@
                                             <input type="text" name="sku[]" id="sku" class="form-control form-control-sm" value="{{$attribute->sku}}">
                                         </td>
                                         <td class="p-0 m-0">
+                                            <input type="text" name="color[]" id="color" class="form-control form-control-sm" value="{{$attribute->color}}">
+                                        </td>
+                                        <td class="p-0 m-0">
                                             <input type="text" name="size[]" id="size" class="form-control form-control-sm" value="{{$attribute->size}}">
                                         </td>
                                         <td class="p-0 m-0">
@@ -76,8 +80,9 @@
                                             <input type="text" name="stock[]" id="stock" class="form-control form-control-sm" value="{{$attribute->stock}}">
                                         </td>
                                         <td class="p-0 m-0">
-                                            <button type="submit" class="btn btn-success btn-sm">Edit</button>
-                                            <a onclick="return confirm('Are you sure?')" href="/admin/delete-attribute/{{$attribute->id}}" class="btn btn-danger btn-sm">Delete</a>
+                                            <a href="javascript:void(0)" onclick="editAnchorFunc();">Edit</a>
+                                            <br>
+                                            <a onclick="return confirm('Are you sure?')" href="/admin/delete-attribute/{{$attribute->id}}">Delete</a>
                                         </td>
                                     </tr>
                                 @endforeach
@@ -96,6 +101,7 @@
                             <div class="form-group">
                                 <input type="hidden" name="products_id" value="{{$product->id}}">
                                 <input type="text" class="form-control form-control-sm mb-2" name="sku" value="{{old('sku')}}" id="sku" placeholder="SKU">
+                                <input type="text" class="form-control form-control-sm mb-2" name="color" value="{{old('color')}}" id="color" placeholder="Color">
                                 <input type="text" class="form-control form-control-sm mb-2" name="size" value="{{old('size')}}" id="size" placeholder="Size">
                                 <input type="text" class="form-control form-control-sm mb-2" name="price" value="{{old('price')}}" id="price" placeholder="Price">
                                 <input type="number" class="form-control form-control-sm mb-2" name="stock" value="{{old('stock')}}" id="stock" placeholder="Stock">
@@ -110,4 +116,9 @@
 @endsection
 
 @section('jsblock')
+    <script>
+        function editAnchorFunc(){
+            $("#attrFrom").submit();
+        }
+    </script>
 @endsection

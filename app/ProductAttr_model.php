@@ -11,6 +11,7 @@ class ProductAttr_model extends Model
     protected $fillable=[
         'products_id',
         'sku',
+        'color',
         'size',
         'price',
         'stock'

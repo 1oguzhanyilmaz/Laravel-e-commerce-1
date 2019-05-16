@@ -84,8 +84,9 @@ class UsersController extends Controller
     ##### Admin Panel #####
     public function userIndex(){
         $i=0;
-        $users = User::orderBy('created_at','desc')->get();
-        return view('backEnd.users.index',compact('users','i'));
+        $users = User::orderBy('created_at','desc')->paginate(10);
+        return view('backEnd.users.index',compact('users','i'))
+            ->with('i', (request()->input('page', 1) - 1) * 10);
     }
     public function userCreate(){
         return view('backEnd.users.create');
